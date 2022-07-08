@@ -1,4 +1,27 @@
-@import-normalize; /* bring in normalize.css styles */
+:root {
+  --primary: #212121;
+  --primary-shade: #4a4c4ed6;
+  --primary-shade-two: #6f7478;
+
+  --secondary: #e4e9f0;
+  --secondary-shade: #d2d9e0;
+  --secondary-shade-two: #ecf1f4;
+  --secondary-shade-three: #e4e4e4;
+  --secondary-shade-four: #e0e0e0;
+
+  --primary-decor: #49b6ff;
+  --primary-decor-shade: #00bcd5;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
 
 body {
   margin: 0;
