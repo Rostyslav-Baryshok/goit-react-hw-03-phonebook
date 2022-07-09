@@ -13,11 +13,11 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contactList = localStorage.getItem('contactList')
-    if (contactList) {
+    const contacts = localStorage.getItem('contacts')
+    if (contacts) {
       try {
-        const parseContactList = JSON.parse(contactList);
-        this.setState({ contacts: parseContactList });
+        const parsecontacts = JSON.parse(contacts);
+        this.setState({ contacts: parsecontacts });
       } catch {
         this.setState({ contacts: [] });
       }
@@ -27,7 +27,7 @@ export class App extends Component {
   componentDidUpdate(_, prevState) {
 
     if(this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contactList', JSON.stringify(this.state.contacts))
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
     }
   }
 
