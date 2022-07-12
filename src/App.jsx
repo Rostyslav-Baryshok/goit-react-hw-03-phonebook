@@ -6,6 +6,9 @@ import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
 import { Container, Title } from 'Container/Container';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -13,7 +16,7 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts')
+    const contacts = localStorage.getItem('contacts');
     if (contacts) {
       try {
         const parsecontacts = JSON.parse(contacts);
@@ -25,9 +28,8 @@ export class App extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-
-    if(this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
 
@@ -52,7 +54,9 @@ export class App extends Component {
       const isContact = contacts.find(contact => contact.name === name);
 
       if (isContact) {
-        alert(`${name} is already in contact`);
+        toast.error(`${name} is already in contact`, {
+          autoClose: 3000,
+        });
         return contacts;
       } else {
         return {
@@ -91,6 +95,7 @@ export class App extends Component {
           filtrationContacts={this.filtrationContacts(filter)}
           onDelete={this.contactDelete}
         />
+        <ToastContainer />
       </Container>
     );
   }
