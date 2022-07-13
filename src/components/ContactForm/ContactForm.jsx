@@ -9,11 +9,6 @@ const schema = yup.object().shape({
 });
 
 export class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
-
   hadleSubmit = (values, { resetForm }) => {
     const newName = {
       name: values.name,
@@ -26,35 +21,26 @@ export class ContactForm extends Component {
   render() {
     return (
       <Formik
-        initialValues={this.state}
+        initialValues={{
+          name: '',
+          number: '',
+        }}
         validationSchema={schema}
         onSubmit={this.hadleSubmit}
       >
-        {props => (
-          <Form>
-            <Label>
-              <InputEl>Name</InputEl>
-              <Field
-                type="text"
-                name="name"
-                onChange={props.handleChange}
-                value={props.values.name}
-              />
-              <ErrorMessage name="name" component="div" />
-            </Label>
-            <Label>
-              <InputEl>Number</InputEl>
-              <Field
-                type="tel"
-                name="number"
-                onChange={props.handleChange}
-                value={props.values.number}
-              />
-              <ErrorMessage name="number" component="div" />
-            </Label>
-            <Button type="submit">Add contact</Button>
-          </Form>
-        )}
+        <Form>
+          <Label>
+            <InputEl>Name</InputEl>
+            <Field type="text" name="name" />
+            <ErrorMessage name="name" component="div" />
+          </Label>
+          <Label>
+            <InputEl>Number</InputEl>
+            <Field type="tel" name="number" />
+            <ErrorMessage name="number" component="div" />
+          </Label>
+          <Button type="submit">Add contact</Button>
+        </Form>
       </Formik>
     );
   }

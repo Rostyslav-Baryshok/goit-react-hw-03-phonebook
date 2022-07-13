@@ -4,7 +4,8 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
-import { Container, Title } from 'Container/Container';
+import { Container } from 'components/Container/Container';
+import { Title } from 'components/Title/Title';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
